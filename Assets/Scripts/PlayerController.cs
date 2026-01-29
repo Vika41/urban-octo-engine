@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D _rb;
-
     [SerializeField] private Animator _animator;
     [SerializeField] private SpriteRenderer _characterBody;
     [SerializeField] private float _movementSpeed;
+
+    private Rigidbody2D _rb;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector2 movement = new Vector2(moveHorizontal, moveVertical).normalized * _movementSpeed;
-
         _rb.velocity = movement;
 
         bool characterIsWalking = movement.magnitude > 0f;

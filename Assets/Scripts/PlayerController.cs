@@ -36,4 +36,16 @@ public class PlayerController : MonoBehaviour
         bool flipSprite = movement.x < 0f;
         _characterBody.flipX = flipSprite;
     }
+
+    public void HandleDeath()
+    {
+        bool characterIsDying = true;
+        _animator.SetBool("isDying", characterIsDying);
+        GameManager.Instance.GameOver();
+    }
+
+    public void GainSpeed(float speedIncrease)
+    {
+        _movementSpeed += speedIncrease;
+    }
 }

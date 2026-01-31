@@ -6,10 +6,10 @@ using UnityEngine.Tilemaps;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private Enemy _armlessPrefab;
-    [SerializeField] private Enemy _batPrefab;
-    [SerializeField] private Enemy _ratPrefab;
-    [SerializeField] private Enemy _slimePrefab;
+    //[SerializeField] private Enemy _armlessPrefab;
+    //[SerializeField] private Enemy _batPrefab;
+    //[SerializeField] private Enemy _ratPrefab;
+    //[SerializeField] private Enemy _slimePrefab;
 
     [SerializeField] private Tilemap _groundTiles;
 
@@ -19,17 +19,17 @@ public class EnemySpawner : MonoBehaviour
     private List<Vector3> _spawnPositions = new();
     
     private float _currentCooldown;
-    private static Enemy[] _enemies;
+    //private static Enemy[] _enemies;
 
     private void Start()
     {
-        _enemies = new Enemy[]
-        {
-            _armlessPrefab,
-            _batPrefab,
-            _ratPrefab,
-            _slimePrefab
-        };
+        //_enemies = new Enemy[]
+        //{
+        //    _armlessPrefab,
+        //    _batPrefab,
+        //    _ratPrefab,
+        //    _slimePrefab
+        //};
         SetEnemySpawnPositions();
         InvokeRepeating(nameof(HandleGameDifficultyIncrease), 1f, 1f);
     }
@@ -66,9 +66,19 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemyToRandomLocation()
     {
-        int randomEnemy = Random.Range(0, _enemies.Length);
-        Enemy enemy = _enemies[randomEnemy];
-        Instantiate(enemy, GetRandomPosition(), Quaternion.identity);
+        //int randomEnemy = Random.Range(0, _enemies.Length);
+        //Enemy enemy = _enemies[randomEnemy];
+
+        int randomEnemy = Random.Range(0, ObjectPool.SharedInstance._amountToPool);
+
+        GameObject enemy = ObjectPool.SharedInstance.GetPooledObject(randomEnemy);
+
+        if (enemy != null)
+        {
+            enemy.transform.SetPositionAndRotation(GetRandomPosition(), Quaternion.identity);
+            enemy.SetActive(true);
+        }
+        //Instantiate(enemy, GetRandomPosition(), Quaternion.identity);
     }
 
     private Vector3 GetRandomPosition()

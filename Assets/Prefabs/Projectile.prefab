@@ -94,8 +94,7 @@ GameObject:
   - component: {fileID: 4055634003749522213}
   - component: {fileID: 6286731102930795589}
   - component: {fileID: 3708305501010141532}
-  - component: {fileID: 4617683272469736928}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -193,22 +192,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cf833f23bafe504284d58449bb90dbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitParticlePrefab: {fileID: 1889595215669723026, guid: 06c1360c701ff9b4db4c211a77e321f0, type: 3}
   _rb: {fileID: 6286731102930795589}
   _travelSpeed: 10
-  dmg: 1
---- !u!114 &4617683272469736928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5898191730259333619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbe30c8e7a40b004796d0b6400a65ebc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hitParticlePrefab: {fileID: 1889595215669723026, guid: 06c1360c701ff9b4db4c211a77e321f0, type: 3}
+  _damage: 2
 --- !u!1 &6641375813169761565
 GameObject:
   m_ObjectHideFlags: 0

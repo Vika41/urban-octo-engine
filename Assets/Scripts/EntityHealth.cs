@@ -39,6 +39,24 @@ public class EntityHealth : MonoBehaviour
         }
     }
 
+    public void GainHealth(float healthGained)
+    {
+        _currentHealth = Mathf.Clamp(_currentHealth + healthGained, 0, _maxHealth);
+        OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
+    }
+
+    public void GainMaxHealth(float healthIncrease)
+    {
+        _maxHealth += healthIncrease;
+        _currentHealth = _maxHealth;
+        OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
+    }
+
+    public void SetHealthRegen(float healthRegen)
+    {
+        _healthRegen = healthRegen;
+    }
+
     public void Death()
     {
         OnDeath?.Invoke();

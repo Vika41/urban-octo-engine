@@ -15,6 +15,23 @@ public class DamageDealer : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out EntityHealth entityHealth))
         {
             entityHealth.LoseHealth(Time.fixedDeltaTime * _dps);
+
+            if (gameObject.name.Contains("Armless"))
+            {
+                EnemyManager.Instance.OnArmlessAttack();
+            }
+            if (gameObject.name.Contains("Bat"))
+            {
+                EnemyManager.Instance.OnBatAttack();
+            }
+            if (gameObject.name.Contains("Rat"))
+            {
+                EnemyManager.Instance.OnRatAttack();
+            }
+            if (gameObject.name.Contains("Slime"))
+            {
+                EnemyManager.Instance.OnSlimeAttack();
+            }
         }
     }
 }
